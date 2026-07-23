@@ -1,0 +1,1525 @@
+@charset "utf-8";
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/*
+Base style
+*/
+body {
+    font-family:"Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333;
+}
+
+
+/*
+header
+*/
+.header {
+    width: 100%;
+    height: 100px;
+    padding: 0px 60px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background: transparent;
+    transition: all .3s ease;
+}
+.header.active {
+    height: 85px;
+    background: #EDE7DF;
+    box-shadow: 0 3px 10px rgba(0,0,0,.15);
+}
+.header-logo {
+    margin: 0;
+}
+.header-logo > a {
+    display: block;
+    font-family: "Noto Serif JP", serif;
+    font-size: 32px;
+    font-weight: 700;
+    text-decoration: none;
+}
+.header-logo img {
+    height: 70px;
+    transition: all .3s ease;
+}
+.header.active .header-logo img {
+    height: 60px;
+}
+/*.header-nav {}*/
+.header-navlist {
+    margin: 0;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+/*.header-navitem {}*/
+.header-navitem > a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    font-family: "Noto Serif JP", serif;
+    font-size: 22px;
+    font-weight: 400;
+    border-bottom: 2px solid transparent;
+    transition: border-color .25s;
+}
+.header.active .header-navitem > a {
+    font-size: 20px;
+}
+.header-navitem > a:hover {
+    border-bottom: 2px solid #333;
+}
+
+
+/*
+スライドショー
+*/
+.hero {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    margin-bottom: 80px;
+}
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35); /* 黒いフィルター */
+    z-index: 1;
+}
+.hero-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    animation: slideshow 15s infinite;
+}
+.hero-slide:nth-child(1) {
+    animation-delay: 0s;
+}
+.hero-slide:nth-child(2) {
+    animation-delay: 5s;
+}
+.hero-slide:nth-child(3) {
+    animation-delay: 10s;
+}
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/*
+画像の上の文字
+*/
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    z-index: 2;
+}
+.hero-text h2 {
+    margin: 0;
+    font-family: "Noto Serif JP", serif;
+    font-size: 60px;
+    font-weight: 400;
+}
+.hero-text p {
+    margin-top: 20px;
+    font-size: 24px;
+    line-height: 1.8;
+}
+@keyframes slideshow {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/*
+grid
+*/
+.grid {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+.grid-item {
+    list-style: none;
+    max-width: 400px;
+}
+.grid-col-2 > .grid-item {
+    width: 50%;
+}
+.grid-col-3 > .grid-item {
+     width: calc(33.333% - 40px);
+}
+.grid-col-4 > .grid-item {
+    width: 25%;
+}
+
+
+/*
+featureごあいさつ、会社概要、企業理念
+*/
+.feature {
+    text-align: center;
+    padding: 5px 15px 60px;
+    
+}
+.feature-headline {
+    font-family :"Noto Serif JP", serif;
+    font-size: xx-large;
+    font-weight: 400;
+    margin: 0 0 10px;
+}
+.feature-headline::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: #333;
+    margin: 12px auto 0;
+}
+.feature-image {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: block;
+    height: auto;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.feature-image img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+
+/*
+cardごあいさつ、会社概要、企業理念
+*/
+/*card {}*/
+.card-link {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    position: relative;
+    transition: background-color .25s;
+}
+.card-link:hover {
+    background-color: #fff;
+    opacity: 0.8;
+}
+
+
+/*
+施工事例about
+*/
+.third {
+    background-color: #eee7e0;
+    width: 100%;
+    margin-top: 80px;
+    padding: 70px 0 100px;
+    display: flex;
+    justify-content: center;
+    font-family: "Noto Serif JP", serif;
+}
+
+.about {
+    margin: 0 auto;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 0 50px;
+}
+
+/* 画像 */
+.about-image {
+    width: 600px;
+    height: 400px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    margin: 0 60px;
+    border-radius: 15px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.about-caption {
+    padding-left: 15px;
+    margin-top: 20px;
+}
+
+.about-headline {
+    margin: 0 0 20px;
+    font-size: 50px;
+    font-weight: 400;
+    display: inline-block;
+}
+
+.about-headline::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 2px;
+    background: #333;
+    margin: 12px auto 0;
+}
+
+.about-description {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.about-link {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    position: relative;
+}
+
+
+/*
+about-link-botton
+*/
+.about-link-button {
+    display: inline-block;
+    color: #eee;
+    font-weight: 400;
+    font-size: 20px;
+    background-color: #333;
+    text-align: center;
+    padding: 12px 60px;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 0 #bbb;
+    transition: box-shadow .25s;
+}
+.about-link-button:hover {
+    box-shadow: 0 0 0 #bbb;
+}
+
+
+/*
+toiawase
+*/
+.contact-banner{
+    position: relative;
+    width: 1200px;
+    height: 600px;
+    margin: 100px auto;
+    overflow: hidden;
+    border-radius: 5px;
+}
+.contact-banner img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+}
+/* 黒いフィルター */
+.contact-banner::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.35);
+}
+
+
+/* 文字 */
+.contact-overlay{
+    position:absolute;
+    top:50%;
+    left:10%;
+    transform:translateY(-50%);
+    z-index:2;
+    color:#fff;
+}
+.contact-subtitle{
+    font-size:22px;
+    margin-bottom:10px;
+}
+.contact-title{
+    font-family:"Noto Serif JP", serif;
+    font-size:54px;
+    font-weight:400;
+    line-height:1.4;
+    margin-bottom:30px;
+}
+.contact-open{
+    font-size:22px;
+    margin-bottom:20px;
+}
+.contact-button{
+    display:inline-block;
+    padding:15px 70px;
+    color:#fff;
+    border:1px solid #fff;
+    text-decoration:none;
+    transition:.3s;
+}
+.contact-button:hover{
+    background:#fff;
+    color:#333;
+}
+
+
+/*
+footer
+*/
+.footer {
+    background-color: #EDEDED;
+    color: #333;
+}
+.footer-title h2 {
+    text-align: center;
+    padding: 40px 0;
+    position: relative;
+    color: #333333;
+    font-family: "Noto Serif JP", serif;
+    font-size: xx-large;
+    margin: 0;
+    font-weight: 300; 
+    letter-spacing: 0.05em;
+}
+.footer-title h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: #333;
+    margin: 12px auto 0;
+}
+.footer-map {
+    margin: 0;
+    padding: 40px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer-map > iframe {
+    width: 60%;
+}
+.footer-mapinfo {
+    width: 40%;
+    padding: 15px;
+}
+.footer-maplogo {
+    font-family: "Noto Serif JP", serif;
+    font-size: 25px;
+    font-weight: 400;
+    font-style: normal;
+}
+.footer-mapaddress {
+    font-family: "Noto Serif JP", serif;
+    font-style: normal;
+    color: #333;
+}
+.footer-mapaddress > a {
+    color: #333;
+}
+.footer-line {
+    border-color: #444;
+}
+.footer-copy {
+    display: block;
+    text-align: center;
+    padding: 10px;
+}
+
+
+/*
+会社概要ページ
+*/
+
+.company {
+    padding: 120px 0;
+    background: #fff;
+}
+.company-table tr:first-child th,
+.company-table tr:first-child td {
+    border-top: 1px solid #ddd;
+}
+.company-inner {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.company-title {
+    text-align: center;
+    font-family: "Noto Serif JP", serif;
+    font-size: 48px;
+    font-weight: 400;
+    margin-bottom: 70px;
+}
+.company-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: #333;
+    margin: 15px auto 0;
+}
+.company-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 20px;
+}
+.company-table th,
+.company-table td {
+    padding: 28px 35px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    vertical-align: top;
+}
+.company-table th {
+    width: 220px;
+    background: #f7f7f7;
+    font-family: "Noto Serif JP", serif;
+    font-weight: 400;
+}
+.company-table td {
+    background: #fff;
+}
+.business-list {
+    margin: 0;
+    padding-left: 20px;
+}
+.business-list li {
+    margin-bottom: 8px;
+}
+
+/*
+フッターメニュー
+*/
+.footer-nav {
+    padding: 35px 0 45px;
+}
+.footer-navlist {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.footer-navlist a {
+    color: #333;
+    text-decoration: none;
+    font-family: "Noto Serif JP", serif;
+    font-size: 20px;
+    font-weight: 400;
+    padding-bottom: 6px;
+    border-bottom: 2px solid transparent;
+    transition: border-color .25s;
+}
+.footer-navlist a:hover {
+    border-bottom: 2px solid #333;
+}
+
+
+/*
+施工事例ページ
+*/
+.works {
+    padding: 120px 0;
+}
+.works-inner {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.works-title {
+    text-align: center;
+    font-family: "Noto Serif JP", serif;
+    font-size: 48px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+.works-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: #333;
+    margin: 15px auto 0;
+}
+.works-text {
+    text-align: center;
+    margin-bottom: 70px;
+    font-size: 18px;
+}
+.works-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+}
+.work-card {
+    border-radius: 15px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+    transition: .3s;
+}
+.work-card:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,.15);
+}
+.work-card a {
+    color: #333;
+    text-decoration: none;
+}
+.work-image {
+    overflow: hidden;
+}
+.work-image img {
+    width: 100%;
+    display: block;
+    transition: transform .3s ease;
+}
+.work-card:hover img {
+    transform: scale(1.08);
+}
+.work-card h3 {
+    font-family: "Noto Serif JP", serif;
+    font-size: 26px;
+    font-weight: 400;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+.work-card p {
+    text-align: center;
+    margin: 0 0 25px;
+    color: #666;
+}
+
+
+/* お問い合わせページ */
+
+.page-title {
+    padding: 120px 20px 80px;
+    text-align: center;
+    background: #EDE7DF;
+}
+
+.page-title h1 {
+    font-family: "Noto Serif JP", serif;
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+
+.contact {
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+
+.contact-item {
+    margin-bottom: 35px;
+}
+
+
+.contact-item label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+
+.contact-item span {
+    background: #8b0000;
+    color: white;
+    font-size: 12px;
+    padding: 3px 8px;
+    margin-left: 10px;
+}
+
+
+.contact-item input,
+.contact-item textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+
+.contact-item textarea {
+    height: 200px;
+    resize: vertical;
+}
+
+
+/* 送信ボタン中央配置 */
+.form-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 40px;
+}
+
+
+/* 送信ボタン */
+.contact-link-button {
+    display: inline-block;
+    color: #eee;
+    font-weight: 400;
+    font-size: 22px;
+    font-family: inherit;
+    background-color: #333;
+    text-align: center;
+
+    width: 320px;
+    padding: 20px 60px;
+
+    border-radius: 5px;
+    box-shadow: 5px 5px 0 #bbb;
+    transition: box-shadow .25s;
+
+    border: none;
+    cursor: pointer;
+}
+
+.contact-link-button:hover {
+    box-shadow: 0 0 0 #bbb;
+}
+
+
+/*
+ごあいさつページ
+*/
+
+.greeting {
+    padding: 120px 20px 100px;
+}
+
+.greeting-inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.greeting-title {
+    text-align: center;
+    font-family: "Noto Serif JP", serif;
+    font-size: 48px;
+    font-weight: 400;
+    margin-bottom: 70px;
+}
+
+.greeting-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: #333;
+    margin: 15px auto 0;
+}
+.greeting-message{
+    background:#fff;
+    padding:60px;
+    border-radius:15px;
+    border-top:5px solid #C9B8A6;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.greeting-message p {
+    font-family: inherit;
+    font-size: 18px;
+    line-height: 2.3;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.greeting-sign {
+    margin-top: 70px;
+    text-align: right;
+    font-family: "Noto Serif JP", serif;
+}
+
+.greeting-sign p:first-child {
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.greeting-sign p:last-child {
+    font-size: 28px;
+}
+
+/*
+よくある質問
+*/
+
+.faq{
+    padding:80px 20px;
+}
+
+.faq-inner{
+    max-width:900px;
+    margin:0 auto;
+}
+
+.faq-item{
+    margin-bottom:20px;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.faq-item summary{
+    list-style:none;
+    cursor:pointer;
+    background:#f8f5f1;
+    padding:22px 30px;
+    font-size:20px;
+    font-family:"Noto Serif JP", serif;
+    position:relative;
+}
+
+.faq-item summary::-webkit-details-marker{
+    display:none;
+}
+
+.faq-item summary::before{
+    content:"Q";
+    color:#8c6b4f;
+    font-weight:bold;
+    margin-right:15px;
+}
+
+.faq-item summary::after{
+    content:"+";
+    position:absolute;
+    right:30px;
+    font-size:28px;
+    transition:.3s;
+}
+
+.faq-item[open] summary::after{
+    content:"－";
+}
+
+.faq-item p{
+    margin:0;
+    padding:25px 30px;
+    background:#fff;
+    line-height:2;
+    font-size:17px;
+}
+
+.faq-item p::before{
+    content:"A";
+    color:#8c6b4f;
+    font-weight:bold;
+    margin-right:12px;
+}
+
+/* ハンバーガーボタン */
+
+.menu-button{
+    display:none;
+    background:none;
+    border:none;
+    font-size:32px;
+    cursor:pointer;
+    color:#333;
+}
+.header-nav.open {
+    display: flex;
+}
+.contact-form{
+    max-width:700px;
+    margin:80px auto;
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+}
+
+.contact-form label{
+    display:flex;
+    flex-direction:column;
+    font-size:16px;
+    color:#333;
+    gap:8px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:15px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:16px;
+    font-family:"Noto Sans JP", sans-serif;
+    box-sizing:border-box;
+}
+
+.contact-form textarea{
+    min-height:180px;
+    resize:vertical;
+}
+
+.contact-form button{
+    width:220px;
+    margin:20px auto 0;
+    padding:16px;
+    background:#7A5A42;
+    color:#fff;
+    border:none;
+    border-radius:50px;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.contact-form button:hover{
+    background:#5d4432;
+}
+
+@media screen and (max-width: 768px) {
+
+/* =================
+   全体
+================= */
+
+body {
+    font-size: 14px;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* =================
+   ヘッダー
+================= */
+
+.header {
+    height: 70px;
+    padding: 0 20px;
+}
+
+.header-logo > a {
+    font-size: 24px;
+}
+
+.menu-button{
+    display:block;
+    z-index:1001;
+}
+
+.header-nav{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:#EDE7DF;
+
+    max-height:0;
+    overflow:hidden;
+
+    opacity:0;
+    transform:translateY(-20px);
+
+    transition:
+        max-height .7s ease,
+        opacity .5s ease,
+        transform .5s ease;
+}
+
+.header-nav.open{
+    max-height:500px;
+    opacity:1;
+    transform:translateY(0);
+}
+
+.header-navlist{
+    flex-direction:column;
+    gap:0;
+    padding:20px 0;
+}
+
+.header-navitem{
+    width:100%;
+    text-align:center;
+}
+
+.header-navitem a{
+    display:block;
+    padding:18px;
+    font-size:18px;
+}
+.header.active,
+.header.menu-open {
+    background: #EDE7DF;
+    box-shadow: 0 3px 10px rgba(0,0,0,.15);
+    transition:none;
+}
+
+/* =================
+   メイン画像
+================= */
+
+.hero {
+    height: 500px;
+    margin-bottom: 50px;
+}
+
+.hero-text {
+    left: 5%;
+    right: 5%;
+}
+
+.hero-text h2 {
+    font-size: 32px;
+    line-height: 1.4;
+}
+
+.hero-text p {
+    font-size: 16px;
+}
+
+
+/* =================
+   ごあいさつ等カード
+================= */
+
+.grid {
+    flex-direction: column;
+}
+
+.grid-col-2 > .grid-item,
+.grid-col-3 > .grid-item,
+.grid-col-4 > .grid-item {
+    width: 100%;
+}
+
+.feature {
+    padding: 20px;
+}
+
+.feature-headline {
+    font-size: 28px;
+}
+
+
+/* =================
+   施工事例紹介
+================= */
+
+.about {
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 30px;
+}
+
+.about-image {
+    margin: 0;
+}
+
+.about-headline {
+    font-size: 36px;
+}
+
+.about-description {
+    font-size: 16px;
+}
+
+
+/* =================
+   問い合わせバナー
+================= */
+
+.contact-banner {
+    width: 90%;
+    height: 420px;
+    margin: 60px auto;
+}
+
+.contact-overlay {
+    left: 8%;
+    right: 8%;
+}
+
+.contact-subtitle {
+    font-size: 16px;
+}
+
+.contact-title {
+    font-size: 30px;
+}
+
+.contact-open {
+    font-size: 16px;
+}
+
+.contact-button {
+    padding: 12px 35px;
+}
+
+
+/* =================
+   フッター
+================= */
+
+.footer-map {
+    flex-direction: column;
+}
+
+.footer-map > iframe {
+    width: 100%;
+}
+
+.footer-mapinfo {
+    width: 100%;
+    text-align: center;
+}
+
+.footer-navlist {
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-navlist a {
+    font-size: 15px;
+}
+
+
+/* =================
+   会社概要
+================= */
+
+.company {
+    padding: 80px 0;
+}
+
+.company-title {
+    font-size: 36px;
+}
+
+.company-table {
+    font-size: 15px;
+}
+
+.company-table th,
+.company-table td {
+    display: block;
+    width: 100%;
+    padding: 15px;
+}
+
+
+/* =================
+   施工事例ページ
+================= */
+
+.works {
+    padding: 80px 0;
+}
+
+.works-title {
+    font-size: 36px;
+}
+
+.works-list {
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+
+/* =================
+   お問い合わせ
+================= */
+
+.page-title {
+    padding: 90px 20px 50px;
+}
+
+.page-title h1 {
+    font-size: 36px;
+}
+
+.contact {
+    margin: 50px auto;
+}
+
+.contact-link-button {
+    width: 260px;
+    padding: 18px;
+    font-size: 18px;
+}
+
+/* =========================
+   ごあいさつページ
+========================= */
+
+.greeting {
+    padding: 50px 20px;
+}
+
+.greeting-inner {
+    padding: 30px 25px;
+}
+
+.greeting-title {
+    font-size: 34px;
+}
+
+.greeting-text {
+    font-size: 16px;
+    line-height: 2;
+}
+
+
+/* =========================
+   よくある質問
+========================= */
+
+.faq {
+    padding: 50px 20px;
+}
+
+.faq-item summary {
+    font-size: 18px;
+    padding: 18px 20px;
+}
+
+.faq-item p {
+    font-size: 15px;
+    padding: 18px 20px;
+}
+
+
+/* =========================
+   会社概要
+========================= */
+
+.company-title {
+    font-size: 36px;
+}
+
+.company-table {
+    font-size: 15px;
+}
+
+.company-table th,
+.company-table td {
+    display: block;
+    width: 100%;
+    padding: 15px;
+}
+
+.company-table th {
+    border-bottom: none;
+}
+
+
+/* =========================
+   施工事例
+========================= */
+
+.works-title {
+    font-size: 36px;
+}
+
+.works-list {
+    grid-template-columns: 1fr;
+    gap: 35px;
+}
+
+.work-card h3 {
+    font-size: 22px;
+}
+
+
+/* =========================
+   お問い合わせ
+========================= */
+
+.contact {
+    margin: 50px auto;
+}
+
+.contact-item label {
+    font-size: 16px;
+}
+
+.contact-item input,
+.contact-item textarea {
+    font-size: 15px;
+}
+
+.contact-link-button {
+    width: 100%;
+    max-width: 300px;
+}
+
+
+/* =========================
+   フッター
+========================= */
+
+.footer-navlist {
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-map {
+    flex-direction: column;
+}
+
+.footer-map iframe,
+.footer-mapinfo {
+    width: 100%;
+}
+}
+/* ==========================
+   お問い合わせフォーム
+========================== */
+
+.contact {
+    max-width: 700px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.contact-form label {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    color: #333;
+    font-weight: 500;
+}
+
+.contact-form input,
+.contact-form textarea {
+    margin-top: 10px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: "Noto Sans JP", sans-serif;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 220px;
+}
+
+.contact-form button {
+    width: 220px;
+    margin: 20px auto 0;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background: #8b6b4a;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.contact-form button:hover {
+    background: #6f553a;
+}
+/* ==========================
+   タブレット
+========================== */
+
+@media (max-width:1024px){
+
+.contact{
+    width:90%;
+}
+
+.contact-form label{
+    font-size:17px;
+}
+
+}
+
+
+/* ==========================
+   スマホ
+========================== */
+
+@media (max-width:768px){
+
+.contact{
+    width:92%;
+    margin:50px auto;
+}
+
+.contact-form{
+    gap:20px;
+}
+
+.contact-form label{
+    font-size:16px;
+}
+
+.contact-form input,
+.contact-form textarea{
+    padding:12px;
+    font-size:16px;
+}
+
+.contact-form button{
+    width:100%;
+    font-size:17px;
+}
+
+.page-title{
+    padding:70px 20px;
+}
+
+.page-title h1{
+    font-size:42px;
+}
+
+.page-title p{
+    font-size:15px;
+    line-height:1.8;
+}
+/* =========================
+   サンクスページ
+========================= */
+
+.thanks {
+    padding: 100px 20px 60px;
+}
+
+.thanks-title {
+    font-size: 34px;
+}
+
+.thanks-text {
+    font-size: 16px;
+    line-height: 2;
+}
+
+.thanks-button {
+    width: 100%;
+    max-width: 280px;
+    padding: 16px;
+}
+
+}
+/*
+サンクスページ
+*/
+
+.thanks {
+    padding: 150px 20px 100px;
+    text-align: center;
+}
+
+.thanks-inner {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.thanks-title {
+    font-family: "Noto Serif JP", serif;
+    font-size: 48px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.thanks-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: #333;
+    margin: 15px auto 0;
+}
+
+.thanks-text {
+    font-size: 18px;
+    line-height: 2;
+    margin-bottom: 50px;
+}
+
+.thanks-button {
+    display: inline-block;
+    padding: 15px 50px;
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 0 #bbb;
+    transition: .25s;
+}
+
+.thanks-button:hover {
+    box-shadow: 0 0 0 #bbb;
+}
