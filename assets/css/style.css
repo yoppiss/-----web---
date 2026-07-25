@@ -297,7 +297,7 @@ cardごあいさつ、会社概要、企業理念
     width: 600px;
     height: 400px;
     object-fit: cover;
-    object-position: center top;
+    object-position: center;
     display: block;
     margin: 0 60px;
     border-radius: 15px;
@@ -630,10 +630,15 @@ footer
     text-decoration: none;
 }
 .work-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
     overflow: hidden;
 }
+
 .work-image img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
     transition: transform .3s ease;
 }
@@ -1472,6 +1477,11 @@ img {
     padding: 16px;
 }
 
+.gallery-thumbnail {
+    width: 60px;
+    height: 45px;
+}
+
 }
 /*
 サンクスページ
@@ -1522,4 +1532,125 @@ img {
 
 .thanks-button:hover {
     box-shadow: 0 0 0 #bbb;
+}
+
+/*
+----------------------------------------
+施工事例 モーダル
+----------------------------------------
+*/
+
+.gallery-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.gallery-content {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    text-align: center;
+}
+
+#galleryMainImage {
+    width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.gallery-close {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    font-size: 40px;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.gallery-prev,
+.gallery-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 45px;
+    color: #fff;
+    background: rgba(0,0,0,.4);
+    border: none;
+    width: 50px;
+    height: 70px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.gallery-prev {
+    left: -70px;
+}
+
+.gallery-next {
+    right: -70px;
+}
+
+.gallery-thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.gallery-thumbnails img {
+    width: 90px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: .3s;
+}
+
+.gallery-thumbnails img:hover {
+    border-color: #fff;
+    transform: scale(1.05);
+}
+
+/* ===========================
+サムネイル
+=========================== */
+
+.gallery-thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.gallery-thumbnail {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: .6;
+    transition: .25s;
+    border: 2px solid transparent;
+}
+
+.gallery-thumbnail:hover {
+    opacity: 1;
+}
+
+.gallery-thumbnail.active {
+    opacity: 1;
+    border: 2px solid #fff;
+    transform: scale(1.08);
 }
