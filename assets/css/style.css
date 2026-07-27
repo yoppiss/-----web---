@@ -61,7 +61,13 @@ header
     font-family: "Noto Serif JP", serif;
     font-size: 32px;
     font-weight: 700;
+    color: #333;
     text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: border-color .25s;
+}
+.header-logo > a:hover {
+    border-bottom: 2px solid #333;
 }
 .header-logo img {
     height: 70px;
@@ -1217,7 +1223,7 @@ img {
 }
 
 /* =========================
-   ごあいさつページ
+   ごあいさつページ（スマホ）
 ========================= */
 
 .greeting {
@@ -1225,16 +1231,27 @@ img {
 }
 
 .greeting-inner {
-    padding: 30px 25px;
+    padding: 30px 20px;
 }
 
 .greeting-title {
-    font-size: 34px;
+    font-size: 32px;
+    margin-bottom: 30px;
 }
 
-.greeting-text {
+.greeting-message p {
     font-size: 16px;
-    line-height: 2;
+    line-height: 2.1;
+    margin-bottom: 24px;
+    text-align: justify;
+    text-justify: inter-ideograph;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.greeting-sign {
+    margin-top: 40px;
+    text-align: right;
 }
 
 
